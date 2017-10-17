@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 
-import Home from '../views/home/homePage.js';
-import About from '../views/about/aboutPage.js';
+import Home from '../../views/home/homePage.js';
+import About from '../../views/about/aboutPage.js';
 
 // console.log(About)
 // const Home=()=>(

@@ -1,0 +1,61 @@
+@import '../common/mixin.styl'
+
+.calender
+  width 396px
+  height 366px
+  background darken(#fff,75) 
+  margin-top 3px
+  color darken(#fff,25%)
+  .cal-head
+    b-t-c(darken(#fff,66))
+    @extends .d-f-c
+    height 36px
+    font-size 18px
+    >span
+      &:nth-child(2)
+        margin 0 16px
+        >span
+          margin 0 7px
+  .cal-content
+    // color #fff
+    .cal-week
+      @extends .d-f-c
+      height 38px
+      span
+        flex 1
+        color @color
+    .cal-date
+      display flex
+      align-items flex-start
+      flex-wrap wrap
+      li
+        width (100/7%)
+        height 30px
+        text-align center
+        @extends .d-f-a
+        span
+          // border 1px solid #fff
+          width 24px
+          height @width
+          line-height 24px
+          text-align center
+          &:hover
+            background darken(#fff,65)
+            border-radius 50%
+            // transform \
+            transition all linear 3s
+        &.dark
+          color darken(#fff,60)
+        &.today
+          // color red
+          span
+            background darken(#fff,65)
+            border-radius 50%
+  .cal-foot
+    padding-left 22px
+    padding-top 20px
+    h3
+      color darken(#fff,20)
+      font-size 18px
+    p
+      font-size 14px

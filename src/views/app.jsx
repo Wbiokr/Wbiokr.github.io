@@ -1,19 +1,39 @@
 import React from 'react';
-import '../style/css/normalize.css';
-// import 'antd/dist/antd.css';
-import {Button} from 'antd';
+import '../style/common/normalize.styl';
+import '../style/common/app.styl';
+import Header from '../components/layout/Header.js';
+import Footer from '../components/layout/Footer.js';
+import Main from '../components/layout/Main.js';
+import Aside from '../components/layout/Aside.js';
 
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
-import Main from '../components/Main.js';
+import '../modules/config/config.js';
 
-const App=()=>(
-  <div className='wrapper'>
-    <Header />
-    <Main />
-    <Footer />
-    <Button type='danger' ghost>Button</Button>
-  </div>
-)
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    // console.log(window.config);
+    // this.changeScale();
+    // this.changeBack();
+  }
+  changeScale(){
+    if(window.config.appWidth>1200||window.config.appWidth<800) return ;
+    const scale=window.config.appWidth/1200;
+    document.body.style.transform=`scale(${scale})`;
+  }
+  changeBack(){
+    
+    document.body.style.backgroundSize=`${window.config.appWidth}px ${window.config.appHeight}px`
+  }
+  render(){
+    return(
+      <div className='wrapper'>
+        <Header />
+        <Main />
+        <Footer />
+        <Aside />
+      </div>
+    )
+  }
+}
 
 export default App;
