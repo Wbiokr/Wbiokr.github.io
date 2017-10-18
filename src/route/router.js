@@ -2,34 +2,40 @@ import React from 'react';
 import {Switch,Route} from 'react-router-dom';
 
 // 通过bundle模型来异步加载组件
-import Bundle from './bundle';
+// 使用方法一的时候，这么配置
+// import Bundle from './bundle';
+// 使用方法2 的时候这么配置
+import Bundlet from './bundle2';
 
-// 
-// import Home from '../components/views/homePage';
+// 方法1：import()
+// const About=()=>(
+//   <Bundle load={()=>import('../components/views/aboutPage')}>
+//     {(Component)=><Component />}
+//   </Bundle>
+// )
 
-const CreateComponent111=(url)=>(
-  <Bundle load={()=>import(url)}>
-    {(Component)=><Component />}
-  </Bundle>
-)
+// 方法2：require.ensure()
+const Home=(props)=>(
+  <Bundlet load={
+    (cb)=>{
+      require.ensure([],require=>{
+        cb(require('../components/views/homePage').default)
+      },'home');
+    }}>
+  {(Home)=><Home {...props} />}
+  </Bundlet>
+);
 
-// 异步引入页面组件方法
-// import AboutPage from 'bundle-loader?lazy&name=app-[name]!./app/list.js';
-// const AboutPage=require("bundle-loader?lazy&name=[name]-chunk!../components/views/aboutPage");
-const About=()=>(
-  <Bundle load={()=>import('../components/views/aboutPage')}>
-    {(Component)=><Component />}
-  </Bundle>
+const About=(props)=>(
+  <Bundlet load={
+    (cb)=>{
+      require.ensure([],require=>{
+        cb(require('../components/views/aboutPage').default)
+      },'about')
+    }
+  } />
+  
 )
-// const Home=CreateComponent111('../components/views/homePage')
-const Home=()=>(
-  <Bundle load={()=>import('../components/views/homePage')}>
-    {(Component)=><Component />}
-  </Bundle>
-)
-// const Home=()=>(<Bundle load={()=>import('../components/views/homePage')}>
-// {(Component)=><Component />}
-// </Bundle>)
 
 
 class Routes extends React.Component{
