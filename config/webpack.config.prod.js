@@ -70,7 +70,7 @@ module.exports = {
     filename: 'static/js/[name].js',
     chunkFilename: 'static/js/pages/chunk.[name].js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
-    publicPath: './',
+    publicPath: './build/',
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path
