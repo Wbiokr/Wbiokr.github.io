@@ -68,7 +68,7 @@ module.exports = {
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
     filename: 'static/js/[name].js',
-    chunkFilename: 'static/js/[name].chunk.js',
+    chunkFilename: 'static/js/pages/chunk.[name].js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: './',
     // Point sourcemap entries to original disk location (format as URL on Windows)

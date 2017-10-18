@@ -5,8 +5,13 @@ import {Switch,Route} from 'react-router-dom';
 import Bundle from './bundle';
 
 // 
-import Home from '../components/views/homePage';
+// import Home from '../components/views/homePage';
 
+const CreateComponent111=(url)=>(
+  <Bundle load={()=>import(url)}>
+    {(Component)=><Component />}
+  </Bundle>
+)
 
 // 异步引入页面组件方法
 // import AboutPage from 'bundle-loader?lazy&name=app-[name]!./app/list.js';
@@ -16,6 +21,16 @@ const About=()=>(
     {(Component)=><Component />}
   </Bundle>
 )
+// const Home=CreateComponent111('../components/views/homePage')
+const Home=()=>(
+  <Bundle load={()=>import('../components/views/homePage')}>
+    {(Component)=><Component />}
+  </Bundle>
+)
+// const Home=()=>(<Bundle load={()=>import('../components/views/homePage')}>
+// {(Component)=><Component />}
+// </Bundle>)
+
 
 class Routes extends React.Component{
   render(){
