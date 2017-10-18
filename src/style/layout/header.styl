@@ -16,9 +16,17 @@ header
       // width 260px
       font-size 30px
       line-height @height
+      position relative
       .logoTxt
         margin-left 20px
         letter-spacing 5px
+      .reflect
+        display block
+        opacity .2
+        position absolute
+        top 0
+        left 0
+        transform scale(0)
     .headerNav
       flex 1   
       margin-left 30px
@@ -31,9 +39,8 @@ header
           a
             color darken(#fff,50)
             transition color linear .3s
-            &:hover,&.current
-              color darken(#fff,10)
-              transition color ease .3s
+            // &:hover,&.current
+              
             >*
               float left
             >i
@@ -53,8 +60,9 @@ header
           input
             background darken(#fff,70)
             height 20px
-            padding-left 3px
+            padding-left 10px
             color darken(#fff,30)
+            font-size 12px
           i
             margin-left -20px
             font-size 12px
@@ -63,5 +71,8 @@ header
           font-size 20px
           i
             margin 0 3px
-            // font
-              
+            color darken(#fff,45)
+            transition all linear .4s
+        // i:hover
+        //   color darken(#fff,10)
+

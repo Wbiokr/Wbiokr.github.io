@@ -1,11 +1,11 @@
 import React from 'react';
 // import {Switch,Route} from 'react-router-dom';
-import Squre from '../../components/metro/squre.js';
-import Oblong from '../../components/metro/oblong.js';
-import Column from '../../components/metro/column.js';
-import Calender from '../../components/metro/calender.js';
+import Squre from '../../components/metro/squre';
+import Oblong from '../../components/metro/oblong';
+import Column from '../../components/metro/column';
+import Calender from '../../components/metro/calender';
 
-import '../../style\/pages/home.styl';
+import '../../style/pages/home.styl';
 
 class Home extends React.Component{
   constructor(props){
@@ -37,6 +37,13 @@ class Home extends React.Component{
       </div>
     )
   }
+  shouldComponentUpdate(nextProps,nextState){
+    // alert(111)
+  }
+  componentWillUpdate(nextProps,nextState){
+    alert(222)
+  }
+
 }
 
 export default Home;

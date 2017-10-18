@@ -57,7 +57,10 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: false,
   // In production, we only want to load the polyfills and the app code.
-  entry: [require.resolve('./polyfills'), paths.appIndexJs],
+  entry: {
+    app:[require.resolve('./polyfills'), paths.appIndexJs],
+    vendors:['react','react-dom','react-redux','react-router','redux']
+  },
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -293,6 +296,14 @@ module.exports = {
     new ManifestPlugin({
       fileName: 'asset-manifest.json',
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendors','manifest'],
+      // filename: 'static/js/vendors.js'
+    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'manifest',
+    //   chunks: ['vendor']
+    // }),
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
     new SWPrecacheWebpackPlugin({

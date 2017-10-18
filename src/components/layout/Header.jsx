@@ -1,14 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import '../../style/layout/header.styl';
-import Search from '../button/Search.js';
+import Search from '../button/Search';
 // import {Icon } from 'antd';
 import Icon from '../icon/icon';
 
 const Logo=()=>(
   <div className='headerLogo' >
     <Icon type='windows8'/>
-    <span className='logoTxt'>WBIOKR</span>
+    <Icon type='windows8' className='reflect'/>
+    <span className='logoTxt' >WBIOKR</span>  
   </div>
 );
 
@@ -60,7 +61,7 @@ class Header extends React.Component{
             <ul className='clearfix'>
             {
               this.state.navList.map((item,index)=>(
-                <li key={index}><Link to={item.path} className={item.current?'current':''}><Icon type={item.typs} /><span>{item.name}</span></Link></li>
+                <li key={index}><Link to={item.path} className={item.current?'current i-h-10':'i-h-10'} ><Icon type={item.typs} /><span>{item.name}</span></Link></li>
               ))
             }
             </ul>

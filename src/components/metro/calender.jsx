@@ -53,7 +53,7 @@ class Calender extends React.Component {
               
               this.state.dateList.map((item,index)=>{
                 let name=item.dark===1?'dark':(item.dark===2?'today':'');
-                if(this.state.nowMonth!=new Date().getMonth()+1){
+                if(this.state.nowMonth!==new Date().getMonth()+1){
                   name=name.replace(/today/g,'');
                 }
                 const text='今天暂时无事!'

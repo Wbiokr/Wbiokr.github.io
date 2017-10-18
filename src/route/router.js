@@ -1,23 +1,35 @@
 import React from 'react';
-import {BrowserRouter ,Route,Link} from 'react-router-dom';
+import {Switch,Route} from 'react-router-dom';
 
-const RouteConfig=()=>{
-  <BrowserRouter >
-    <nav>
-      <ul>
-        <li><Link to='/'>首页</Link></li>  
-        <li><Link to='/blogs'>博客</Link></li>  
-        <li><Link to='/time'>时间轴</Link></li>  
-        <li><Link to='/about'>关于</Link></li>  
-        <li><Link to='/comments'>留言</Link></li>  
-      </ul>
-    </nav>
-    <Route exact path='/' component={res=>require(['../views/home/homePage.js'],res)} />
-    <Route exact path='/blogs' component={require('../views/blogs/blogsPage.js')} />
-    <Route exact path='/time' component={require('../views/time/timePage')} />
-    <Route exact path='/about' component={require('../views/about/aboutPage.js')} />
-    <Route exact path='/comments' component={require('../views/comments/commentsPage.js')} />
-  </BrowserRouter>
+// 通过bundle模型来异步加载组件
+import Bundle from './bundle';
+
+// 
+import Home from '../components/views/homePage';
+
+
+// 异步引入页面组件方法
+// import AboutPage from 'bundle-loader?lazy&name=app-[name]!./app/list.js';
+// const AboutPage=require("bundle-loader?lazy&name=[name]-chunk!../components/views/aboutPage");
+const About=()=>(
+  <Bundle load={()=>import('../components/views/aboutPage')}>
+    {(Component)=><Component />}
+  </Bundle>
+)
+
+class Routes extends React.Component{
+  render(){
+    return (
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/about' component={About} />
+      </Switch>
+    )
+  }
 }
 
-export default RouteConfig;
+export default Routes;
+
+// 路由页面较多时候，按需加载方法：
+// 1.Route的component改为 getComponent
+// 2.路由组件用require.ensure的烦那个是获取

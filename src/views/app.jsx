@@ -1,12 +1,17 @@
 import React from 'react';
+import {BrowserRouter} from 'react-router-dom';
 import '../style/common/normalize.styl';
 import '../style/common/app.styl';
-import Header from '../components/layout/Header.js';
-import Footer from '../components/layout/Footer.js';
-import Main from '../components/layout/Main.js';
-import Aside from '../components/layout/Aside.js';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+import Main from '../components/layout/Main';
+import Aside from '../components/layout/Aside';
 
-import '../modules/config/config.js';
+import '../modules/config/config';
+// import {createStore} from 'redux';
+// import {Provider} from 'react-redux';
+// import store from '../redux/store';
+
 
 class App extends React.Component{
   constructor(props){
@@ -25,13 +30,18 @@ class App extends React.Component{
     document.body.style.backgroundSize=`${window.config.appWidth}px ${window.config.appHeight}px`
   }
   render(){
+    const supportHistory='pushState' in window.history;
     return(
-      <div className='wrapper'>
-        <Header />
-        <Main />
-        <Footer />
-        <Aside />
-      </div>
+      // <Provider store={store}>
+      <BrowserRouter forceRefrest={!supportHistory} keyLength={12} >
+        <div className='wrapper' >
+          <Header />
+          <Main />
+          <Footer />
+          <Aside />
+        </div>
+        </BrowserRouter>
+        
     )
   }
 }

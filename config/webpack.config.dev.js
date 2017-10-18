@@ -161,10 +161,45 @@ module.exports = {
               // directory for faster rebuilds.
               cacheDirectory: true,
               plugins:[
-                ['import',[{libraryName:'antd',style:'css'}]]
+                // ['import',[{libraryName:'antd',style:'css'}]]
               ],
             },
           },
+          // {
+          //   test: /\.(js|jsx)$/,
+          //   include: paths.appSrc,
+          //   loaders:['bundle-loader?lazy',require.resolve('babel-loader')],
+          //   // options: {
+              
+          //   //   // This is a feature of `babel-loader` for webpack (not Babel itself).
+          //   //   // It enables caching results in ./node_modules/.cache/babel-loader/
+          //   //   // directory for faster rebuilds.
+          //   //   cacheDirectory: true,
+          //   //   // plugins:[
+          //   //   //   ['import',[{libraryName:'antd',style:'css'}]]
+          //   //   // ],
+          //   // },
+          // },
+          // {
+          //   // 匹配routers下面所有文件
+          //   // ([^/]+)\/?([^/]*) 匹配xxx/xxx 或者 xxx
+          //   test: /src\\components\\views(\\.*).(js|jsx)$/,
+          //   // include: path.resolve(__dirname, 'src/route/'),
+          //   // loader: 'bundle-loader?lazy'
+          //   // loaders: ['bundle-loader?lazy', 'babel-loader']
+          //   use:[
+          //     'bundle-loader?lazy',
+          //     'babel-loader',
+          //   ]
+          // },
+          // {
+          //   // 匹配routers下面所有文件
+          //   // ([^/]+)\/?([^/]*) 匹配xxx/xxx 或者 xxx
+          //   test: /views\/([^/]+)\/?([^/]*)\.jsx?$/,
+          //   include: path.resolve(__dirname, 'src/components/'),
+          //   // loader: 'bundle-loader?lazy'
+          //   loaders: ['bundle-loader?lazy', 'babel-loader']
+          // },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.

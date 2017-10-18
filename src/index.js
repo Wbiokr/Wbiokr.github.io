@@ -11,8 +11,6 @@ injectTapEventPlugin();
 
 
 ReactDOM.render(
-  (<BrowserRouter>
-    <App />
-  </BrowserRouter>),
+    <App />,
   document.querySelector('#root')
 )

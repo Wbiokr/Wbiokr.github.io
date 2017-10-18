@@ -20,7 +20,8 @@ class About extends React.Component{
   render(){
     return(
       <div>
-        about
+        about1111111111111111111111
+        <h1>关于我们</h1>
         <Switch>
           <Route exact path='/about' component={about1} />
           <Route  path='/about/:number' component={about2} />
