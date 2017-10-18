@@ -1,18 +1,7 @@
 {
   "main.css": "static/css/main.css",
-  "main.css.map": "static/css/main.css.map",
   "main.js": "static/js/main.js",
-  "main.js.map": "static/js/main.js.map",
-  "static\\media\\app.styl": "static/media/app.styl",
-  "static\\media\\aside.styl": "static/media/aside.styl",
-  "static\\media\\calender.styl": "static/media/calender.styl",
-  "static\\media\\column.styl": "static/media/column.styl",
-  "static\\media\\header.styl": "static/media/header.styl",
-  "static\\media\\home.styl": "static/media/home.styl",
   "static\\media\\iconfont.eot?t=1508247648789": "static/media/iconfont.eot",
   "static\\media\\iconfont.svg?t=1508247648789": "static/media/iconfont.svg",
-  "static\\media\\iconfont.ttf?t=1508247648789": "static/media/iconfont.ttf",
-  "static\\media\\normalize.styl": "static/media/normalize.styl",
-  "static\\media\\oblong.styl": "static/media/oblong.styl",
-  "static\\media\\squre.styl": "static/media/squre.styl"
+  "static\\media\\iconfont.ttf?t=1508247648789": "static/media/iconfont.ttf"
 }
