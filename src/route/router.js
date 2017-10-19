@@ -22,7 +22,7 @@ const Home=(props)=>(
         cb(require('../components/views/homePage').default)
       },'home');
     }}>
-  {(Home)=><Home {...props} />}
+  {(Component)=><Component {...props} />}
   </Bundlet>
 );
 
@@ -33,7 +33,9 @@ const About=(props)=>(
         cb(require('../components/views/aboutPage').default)
       },'about')
     }
-  } />
+  }>
+  {(Component)=><Component {...props} />}
+  </Bundlet>
   
 )
 

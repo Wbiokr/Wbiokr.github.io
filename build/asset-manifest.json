@@ -1,11 +1,11 @@
 {
-  "about.js": "static/js/pages/chunk.about.js",
-  "app.css": "static/css/app.css",
-  "app.js": "static/js/app.js",
-  "home.js": "static/js/pages/chunk.home.js",
-  "manifest.js": "static/js/manifest.js",
-  "static\\media\\iconfont.eot?t=1508247648789": "static/media/iconfont.eot",
-  "static\\media\\iconfont.svg?t=1508247648789": "static/media/iconfont.svg",
-  "static\\media\\iconfont.ttf?t=1508247648789": "static/media/iconfont.ttf",
-  "vendors.js": "static/js/vendors.js"
+  "about.js": "js/pages/chunk.about.ce074.js",
+  "app.css": "css/app.ce074.css",
+  "app.js": "js/app.ce074.js",
+  "home.js": "js/pages/chunk.home.ce074.js",
+  "manifest.js": "js/manifest.ce074.js",
+  "media\\iconfont.eot?t=1508247648789": "media/iconfont.eot",
+  "media\\iconfont.svg?t=1508247648789": "media/iconfont.svg",
+  "media\\iconfont.ttf?t=1508247648789": "media/iconfont.ttf",
+  "vendors.js": "js/vendors.ce074.js"
 }

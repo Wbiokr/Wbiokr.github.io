@@ -12,6 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const progressbarWebpack = require('progress-bar-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -36,7 +37,7 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 }
 
 // Note: defined here because it will be used more than once.
-const cssFilename = 'static/css/[name].css';
+const cssFilename = 'css/[name].[hash:5].css';
 
 // ExtractTextPlugin expects the build output to be flat.
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
@@ -67,8 +68,8 @@ module.exports = {
     // Generated JS file names (with nested folders).
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
-    filename: 'static/js/[name].js',
-    chunkFilename: 'static/js/pages/chunk.[name].js',
+    filename: 'js/[name].[hash:5].js',
+    chunkFilename: 'js/pages/chunk.[name].[hash:5].js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: './build/',
     // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -145,7 +146,7 @@ module.exports = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'static/media/[name].[hash:8].[ext]',
+              name: 'img/[name].[hash:5].[ext]',
             },
           },
           // Process JS with Babel.
@@ -157,7 +158,7 @@ module.exports = {
               
               compact: true,
               plugins:[
-                ['import',[{libraryName:'antd',style:'css'}]]
+                // ['import',[{libraryName:'antd',style:'css'}]]
               ],
             },
           },
@@ -230,7 +231,7 @@ module.exports = {
             // by webpacks internal loaders.
             exclude: [/\.js$/, /\.html$/, /\.json$/],
             options: {
-              name: 'static/media/[name].[ext]',
+              name: 'media/[name].[ext]',
             },
           },
           // ** STOP ** Are you adding a new loader?
@@ -249,6 +250,7 @@ module.exports = {
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
+      filename:'../index.html',
       template: paths.appHtml,
       minify: {
         removeComments: true,
@@ -340,6 +342,10 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new progressbarWebpack({
+      // format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+      clear: true
+    }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

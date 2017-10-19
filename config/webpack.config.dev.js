@@ -22,9 +22,9 @@ const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
-const aliasPath=require('../resolve.js');
+// const aliasPath=require('../resolve.js');
 
-console.log(aliasPath)
+// console.log(aliasPath)
 
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
