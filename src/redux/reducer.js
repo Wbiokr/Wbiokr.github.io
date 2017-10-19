@@ -1,22 +1,20 @@
+// import {combineReducers} from 'redux';
+// import blog from './reducer/blogs';
+// import calender from './reducer/calenders';
+// import music from './reducer/music';
+
+// const wbiokr=combineReducers({
+//   blog,
+//   calender,
+//   music,
+// })
+
+// export default wbiokr ;
 import {combineReducers} from 'redux';
+import counter from './reducer/counter.js';
 
-import music from './reducer/music';
-import blogs from './reducer/blogs';
-import calenders from './reducer/calenders';
-
-// const reducer=(state=0,action)=>{
-//   switch(action.type){
-//     case 'ADD':
-//       return state+action.num
-//     default :
-//       return state;
-//   }
-// }
-
-const reducer=combineReducers({
-  music,
-  blogs,
-  calenders,
+const wbiokr=combineReducers({
+  counter,
 })
 
-export default reducer ;
+export default wbiokr ;
