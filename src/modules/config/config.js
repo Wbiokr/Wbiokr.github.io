@@ -20,10 +20,10 @@ function isWeixin() {
     } else {
         return false;
     };
-    ua=null;
+    // ua=null;
 }
 
 function getPx(type){
-    return document.body[`offset${type}`]
+    return document.documentElement[`client${type}`]
 }
 

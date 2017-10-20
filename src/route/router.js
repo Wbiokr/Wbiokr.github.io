@@ -19,7 +19,7 @@ const Home=(props)=>(
   <Bundlet load={
     (cb)=>{
       require.ensure([],require=>{
-        cb(require('../components/views/homePage').default)
+        cb(require('../redux/containers/pages/rdxHome').default)
       },'home');
     }}>
   {(Component)=><Component {...props} />}

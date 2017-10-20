@@ -11,7 +11,7 @@
 
 // export default wbiokr ;
 import {combineReducers} from 'redux';
-import counter from './reducer/counter.js';
+import counter from './counter.js';
 
 const wbiokr=combineReducers({
   counter,

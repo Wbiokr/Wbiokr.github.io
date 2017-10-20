@@ -22,13 +22,14 @@ class Home extends React.Component{
     return Number(document.querySelector(dom).offsetHeight)
   }
   render(){
+    const {addClick,delClick,num}=this.props;
     const SqureEle=[1,2,1,2,1,2].map((item,index)=>(
       <Squre iconType='eye-o' iconTxt='第一个' iconTitle='first' itemDelay={index*2.6} key={index} />
     ))
     return(
       <div className='pageHome clearfix'>
         <div className='center'>
-          <Column />
+          <Column {...{addClick,delClick,num}}/>
         </div>
         <div className='left'>
           <Calender />
@@ -39,9 +40,11 @@ class Home extends React.Component{
   }
   shouldComponentUpdate(nextProps,nextState){
     // alert(111)
+    return true;
   }
   componentWillUpdate(nextProps,nextState){
-    alert(222)
+    // alert(222)
+    return true;
   }
 
 }

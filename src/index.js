@@ -10,6 +10,9 @@ import store from './redux/store';
 injectTapEventPlugin();
 
 
+store.subscribe(()=>{
+  console.log(store.getState())
+})
 
 ReactDOM.render(
   <Provider store={store}>
