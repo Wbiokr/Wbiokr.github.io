@@ -10,32 +10,16 @@ import store from './redux/store';
 injectTapEventPlugin();
 
 
-store.subscribe(()=>{
-  console.log(store.getState())
-})
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.querySelector('#root')
+const render=()=>(
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.querySelector('#root')
+  )
 )
 
-// ------------demo1-----------------
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import {createStore} from 'redux';
-// import {Provider} from 'react-redux';
-// // import reducer from './wtest/deom1/reducer.js';
-// import reducer from './wtest/demo1/reducer';
-// import generateTree from './wtest/deom1/generateTree';
-// import Node from './wtest/demo1/node'
-// const tree=generateTree();
-// const store=createStore(reducer,tree);
+render();
+let unsubscribe=store.subscribe(render)
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <Node id={0} />
-//   </Provider>,
-//   document.querySelector('#root')
-// )
+unsubscribe();

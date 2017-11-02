@@ -5,5 +5,12 @@ import reducer from './reducer/';
  const store=createStore(reducer);
 
 // let 
+const next=store.dispatch;
+
+store.dispatch=(action)=>{
+  console.log(`dispatching:${JSON.stringify(action)}`)
+  next(action);
+  console.log(`newState:${JSON.stringify(store.getState())}`);
+}
 
  export default store;
