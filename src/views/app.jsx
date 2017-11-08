@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import '../style/common/normalize.styl';
-import '../style/common/app.styl';
+import '../style/normalize.styl';
+import '../style/app.styl';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Main from '../components/layout/Main';
@@ -14,9 +14,9 @@ import '../modules/config/config';
 
 
 class App extends React.Component{
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
   changeScale(){
     if(window.config.appWidth>1200||window.config.appWidth<800) return ;
     const scale=window.config.appWidth/1200;

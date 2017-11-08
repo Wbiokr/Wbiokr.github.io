@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import '../../style/button/backtop.styl';
+import './backtop.styl';
 
 class Backtop extends React.Component{
   constructor(props){

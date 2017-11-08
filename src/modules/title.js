@@ -1,4 +1,4 @@
-module.exports = function (titleMsg) {
+export default function (titleMsg) {
     document.title = titleMsg;
     let i = document.createElement('iframe');
     i.src = '//m.baidu.com/favicon.ico';

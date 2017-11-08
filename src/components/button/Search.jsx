@@ -4,12 +4,6 @@ import Icon from '../icon/icon';
 
 
 class Search extends React.Component{
-  constructor(props){
-    super(props)
-  }
-  seo(){
-    
-  }
   render(){
     return (
       <div className='headerSearch'>
@@ -24,9 +18,5 @@ class Search extends React.Component{
     )
   }
 }
-
-// const Search = ()=>(
-//   <Input />
-// )
 
 export default Search ;

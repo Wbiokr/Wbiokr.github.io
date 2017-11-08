@@ -1,4 +1,5 @@
 import React from 'react';
+import './about.styl';
 import {Switch,Route} from 'react-router-dom';
 
 const about1=()=>(
@@ -7,25 +8,21 @@ const about1=()=>(
 
 const about2=(props)=>{
   const matchObj=props.match;
-  console.log(matchObj)
-  console.log(props)
   return(
-
     <div>about2222222221</div>
   )
 }
 // )
+        // <Switch>
+        //   <Route exact path='/about' component={about1} />
+        //   <Route  path='/about/:number' component={about2} />
+        // </Switch>
 
 class About extends React.Component{
   render(){
     return(
-      <div>
-        about1111111111111111111111
-        <h1>关于我们</h1>
-        <Switch>
-          <Route exact path='/about' component={about1} />
-          <Route  path='/about/:number' component={about2} />
-        </Switch>
+      <div className='page_about'>
+        
       </div>
     )
   }

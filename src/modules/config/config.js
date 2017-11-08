@@ -15,11 +15,11 @@ window.config.apiHeader=isBuild?'https://':'http://t';
 
 function isWeixin() {
     var ua = navigator.userAgent.toLowerCase();
-    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+    if (ua.match(/MicroMessenger/i) === "micromessenger") {
         return true;
     } else {
         return false;
-    };
+    }
     // ua=null;
 }
 

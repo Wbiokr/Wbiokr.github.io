@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../style/metro/oblong.styl';
+import './oblong.styl';
 
 class Oblong extends React.Component {
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
   render(){
     return (
       <div className='oblong'>

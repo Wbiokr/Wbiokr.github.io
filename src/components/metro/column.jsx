@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import '../../style/metro/column.styl';
+// import {connect} from 'react-redux';
+import './column.styl';
 
-import {counter,del} from '../../redux/action/action.js';
+// import {counter,del} from '../../redux/action/action.js';
 
 class Column extends React.Component{
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
   render(){
     const {addClick,delClick,num}=this.props
  

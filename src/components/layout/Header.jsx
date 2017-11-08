@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../../style/layout/header.styl';
 import Search from '../button/Search';
 // import {Icon } from 'antd';
 import Icon from '../icon/icon';

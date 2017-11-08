@@ -1,6 +1,5 @@
 import React from 'react';
-import '../../style/metro/calender.styl';
-// import {Icon,Tooltip} from 'antd';
+import './calender.styl';
 import Icon from '../icon/icon';
 
 class Calender extends React.Component {
@@ -10,28 +9,18 @@ class Calender extends React.Component {
       nowYear:new Date().getFullYear(),
       nowMonth:new Date().getMonth()+1,
       nowDay:new Date().getDate(),
-      // nowWeek:'',
-      // dayNumber:'',
-      // prevDayNumber:'',
-      // nextDayNumber:'',
       weekDays:['一','二','三','四','五','六','日'],
       dateList:[],
     }
   }
   componentWillMount(){
-    // this.getDate();
-    // this.getNumber(2017,10);
-    // setTimeout(()=>{
-    //   // this.renderDate(this.state.dayNumber);
-
-    // },100)
     this.renderDom(this.state.nowYear,this.state.nowMonth);
   }
   render(){
     let eventDom=[];
     if((new Date().getFullYear()===this.state.nowYear)&&(new Date().getMonth()+1===this.state.nowMonth)&&(new Date().getDate()===this.state.nowDay)){
-      eventDom.push(<h3>今日安排:</h3>);
-      eventDom.push(<p>今天没有事情安排！</p>);
+      eventDom.push(<h3 key={Math.random()}>今日安排:</h3>);
+      eventDom.push(<p key={Math.random()}>今天没有事情安排！</p>);
     }
     return (
       <div className='calender'>
@@ -44,7 +33,7 @@ class Calender extends React.Component {
           <h3 className='cal-week'>
             {
               this.state.weekDays.map((week,index)=>(
-                <span key={index}>{week}</span>
+                <span key={index*Math.random()}>{week}</span>
               ))            
             }
           </h3>
@@ -56,7 +45,7 @@ class Calender extends React.Component {
                 if(this.state.nowMonth!==new Date().getMonth()+1){
                   name=name.replace(/today/g,'');
                 }
-                const text='今天暂时无事!'
+                // const text='今天暂时无事!'
                 return (
                   <li key={index*2} className={name}><span className='c-p'>{item.date}</span></li>
                 )
@@ -92,8 +81,7 @@ class Calender extends React.Component {
   renderDom=(year,month)=>{
     let dateList=[];
 
-    const Cale=new Date();
-    const nowFirstWeek=new Date(year,month-1,this.state.nowDay).getDay();
+    // const nowFirstWeek=new Date(year,month-1,this.state.nowDay).getDay();
     
     // 获取当前月份天数
     const nowMonthNumber=new Date(year,month,0).getDate();
@@ -105,10 +93,10 @@ class Calender extends React.Component {
     const prevMonthNumber=new Date(prevYear,prevMonth,0).getDate();
 
     // 下个月份天数
-    const nextYear=month===12?year+1:year;
-    const nextMonth=month===12?1:month+1;
+    // const nextYear=month===12?year+1:year;
+    // const nextMonth=month===12?1:month+1;
 
-    const nextMonthNumber=new Date(nextYear,nextMonth,0).getDate();
+    // const nextMonthNumber=new Date(nextYear,nextMonth,0).getDate();
 
     // 获取本月初周期
     const nowMonthWeekFirst=new Date(year,month-1,1).getDay();
@@ -124,7 +112,7 @@ class Calender extends React.Component {
     dateList.reverse();
     for(let i=1;i<=nowMonthNumber;i++){
       // alert((i===new Date().getDate())&&(year=new Date().getFullYear())&&(month=new Date().getMonth()+1));
-      const obj=((i===new Date().getDate())&&(year=new Date().getFullYear())&&(month=new Date().getMonth()+1))?{date:i,dark:2}:{date:i,dark:0}
+      const obj=((i===new Date().getDate())&&(year===new Date().getFullYear())&&(month===new Date().getMonth()+1))?{date:i,dark:2}:{date:i,dark:0}
       dateList.push(obj);
       
     };
@@ -138,7 +126,9 @@ class Calender extends React.Component {
         dark:1,
       })
     };
-    this.state.dateList=dateList;
+    this.setState({
+      dateList,
+    });
   }
   // renderDate=(number)=>{
   //   const firstWeek=this.getWeek(this.state.nowYear,this.state.nowMonth,1);

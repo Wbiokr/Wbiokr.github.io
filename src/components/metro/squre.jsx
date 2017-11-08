@@ -1,12 +1,12 @@
 import React from 'react';
-import '../../style/metro/squre.styl';
+import './squre.styl';
 // import {Icon} from 'antd';
 import Icon from '../icon/icon';
 
 class Squre extends React.Component{
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
   render(){
     // console.log(this.props.itemDelay)
     return(
