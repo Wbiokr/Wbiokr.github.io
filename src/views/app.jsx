@@ -16,9 +16,6 @@ import '../modules/config/config';
 class App extends React.Component{
   constructor(props){
     super(props);
-    // console.log(window.config);
-    // this.changeScale();
-    // this.changeBack();
   }
   changeScale(){
     if(window.config.appWidth>1200||window.config.appWidth<800) return ;
