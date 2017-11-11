@@ -16,6 +16,7 @@ class Header extends React.Component{
   constructor(props){
     super(props)
     this.state={
+      index:0,
       navList:[
         {
           path:'/',
@@ -48,19 +49,26 @@ class Header extends React.Component{
           current:false,
         },
       ]
-    }
+    };
+    // this.handleIdx=this.handleIdx.bind(this)
+
+  }
+  handleIdx(idx){
+    console.log(idx)
+    this.setState({
+      index:idx
+    });
   }
   render(){
-    console.log(this.state.navList)
     return(
-      <header>
+      <header className={window.Utils.animated('fadeInDown')}>
         <div className='headerWrapper'>
           <Logo name='headerLogo' />
           <nav className='headerNav'>
             <ul className='clearfix'>
             {
               this.state.navList.map((item,index)=>(
-                <li key={index}><Link to={item.path} className={item.current?'current i-h-10':'i-h-10'} ><Icon type={item.typs} /><span>{item.name}</span></Link></li>
+                <li key={index} onClick={this.handleIdx.bind(this,index)}><Link to={item.path} className={index===this.state.index?'current i-h-10':'i-h-10'} ><Icon type={item.typs} /><span>{item.name}</span></Link></li>
               ))
             }
             </ul>

@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import '../style/normalize.styl';
 import '../style/app.styl';
+import 'animate.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Main from '../components/layout/Main';
