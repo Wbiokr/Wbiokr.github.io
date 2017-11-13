@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import '../style/normalize.styl';
 import '../style/app.styl';
 import 'animate.css';
@@ -44,4 +45,12 @@ class App extends React.Component{
   }
 }
 
-export default App;
+const mapStateToProps=state=>({value:state.counter});
+
+const mapDispatchToProps=dispatch=>({
+  onIncrement(){
+    dispatch()
+  }
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
