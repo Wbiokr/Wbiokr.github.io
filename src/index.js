@@ -7,9 +7,10 @@ import './modules/util';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 //监听touch、tap、click事件处理300ms延迟插件
 // 对react所有组件提供了一个onTouchTap()方法处理手机端的的点击事件
-import store from './newredux/store';
+import store from './redux/store';
 injectTapEventPlugin();
 
+console.log(store.getState());
 
 const render=()=>(
   ReactDOM.render(
