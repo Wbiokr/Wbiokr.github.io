@@ -8,7 +8,7 @@ class Main extends React.Component {
   }
   render(){
     return(
-      <main className={window.Utils.animated('fadeInRight')}>
+      <main className={window.Utils.animated('fadeIn')}>
         <Routes />
       </main>
     )
