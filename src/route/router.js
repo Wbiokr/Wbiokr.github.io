@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // import {CSSTransitionGroup} from 'animate.css';
-import { CSSTransitionGroup, CSSTransition } from 'react-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import Bundlet from './bundle2';
 console.log(CSSTransitionGroup);
@@ -94,7 +94,7 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
-      <CSSTransitionGroup >
+     
       {
         routes.map((item,index)=>(
           
@@ -107,7 +107,7 @@ class Routes extends React.Component {
               <Redirect from={item.from} to={item.to} key={index} />
             ))
           }
-      </CSSTransitionGroup>
+    
       </Switch>
     )
   }
