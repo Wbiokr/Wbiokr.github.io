@@ -120,25 +120,6 @@ const mapStyles=styles=>(
   }
 );
 
-// const CkiAnimatedSwitch=(props)=>(
-//   <AnimatedSwitch 
-//   runOnMount={props.runOnMount} 
-//   wrapperComponent={props.wrapperComponent}
-//   className={props.className}
-//   atEnter={props.atEnter}
-//   atLeave={props.atLeave}
-//   atActive={props.atActive}
-//   mapStyles={props.mapStyles}
-//   style={props.style}
-//   >{props.children}</AnimatedSwitch>
-// )
-
-// const NewAnimatedSwitch=styled(CkiAnimatedSwitch).attrs({
-//   class:'newItem',
-// })`
-//   position:relative,
-//   height:100%,
-// `
 
 
 class Routes extends React.Component {
