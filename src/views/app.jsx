@@ -1,33 +1,53 @@
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import '../style/normalize.styl';
-import '../style/app.styl';
-import 'animate.css';
-import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
-import Main from '../components/layout/Main';
-import Aside from '../components/layout/Aside';
-
-import '../modules/config/config';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
+import Routes from '../route/';
 
 
-class App extends React.Component{
-  
+export default class App extends React.Component{
   render(){
-    const supportHistory='pushState' in window.history;
+    const nav=[
+      {title:'音乐',path:'/music'},
+      {title:'电影',path:'/movie'},
+      {title:'旅行',path:'/tour'},
+      {title:'项目',path:'/opus'},
+      {title:'作者',path:'/author'},
+    ]
     return(
-      // <Provider store={store}>
-      <BrowserRouter forceRefrest={!supportHistory} keyLength={12} >
-        <div className='wrapper' >
+      <Router>
+        <div className="wrapper">
           <Header />
-          <Main />
+          <main>
+            <Routes nav={nav} />
+          </main>
           <Footer />
-          <Aside />
         </div>
-        </BrowserRouter>
-        
+      </Router>
     )
   }
 }
 
-export default App;
+const Header=({nav})=>(
+  <header>
+    <section className='logo'></section>
+    <nav>
+      <ul>
+        {
+          nav.map((item,index)=>(
+            <li><Link to={item.path}>{}item.title|</Link></li>
+          ))
+        }
+        <li><Link to='https://github.com/Wbiokr/Wbiokr.github.io/'>github</Link></li>
+      </ul>
+    </nav>
+  </header>
+)
+
+const Footer=()=>(
+  <footer>
+    <p>sdfds</p>
+  </footer>
+)
