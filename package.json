@@ -50,6 +50,7 @@
     "react-router-transition": "^1.1.2",
     "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "style-loader": "0.18.2",
     "styled-components": "^2.2.3",
     "stylus": "^0.54.5",

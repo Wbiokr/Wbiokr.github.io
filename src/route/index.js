@@ -2,11 +2,11 @@ import React from 'react';
 import {
   Switch,
   Route,
-  Redirect,
+  // Redirect,
 } from 'react-router-dom';
 import {
-  AnimatedSwitch,
-  spring
+  // AnimatedSwitch,
+  // spring
 } from 'react-router-transition';
 
 import Bundle from './bundle';
@@ -129,15 +129,16 @@ const routes=[
   
 ]
 
+
 export default class Routes extends React.Component{
   render(){
     return(
       <Switch>
-        {
-          routes.map((item,index)=>(
-            <Route key={index} path={item.path} exact={item.exact} component={item.component} />
-          ))
-        }
+      {
+        routes.map((item,index)=>(
+          <Route key={index} path={item.path} exact={item.exact} component={item.component} />
+        ))
+      }
         <Route component={Nomatch} />
       </Switch>
     )

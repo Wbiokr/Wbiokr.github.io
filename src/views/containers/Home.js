@@ -1,7 +1,19 @@
-import React from 'react';
+import Home from '../../components/Home/';
 
-export default class Nomatch extends React.Component{
-  render(){
-    return <p>home</p>
+import {
+  connect
+} from 'react-redux';
+
+const mapStateToProps=(state)=>{
+  return {
+    state
   }
 }
+
+const mapDispatchToProps=(dispatch)=>{
+  return {
+    // getData:
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

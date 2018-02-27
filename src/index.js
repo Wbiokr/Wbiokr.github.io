@@ -7,15 +7,23 @@ import './utils/';
 
 import store from './redux/';
 
+
+// ReactDOM.render(
+//   <App />,
+//   document.querySelector('#root')
+// )
+
 const render=()=>(
   ReactDOM.render(
-    <Provider {...{store}}>
-      <App />
-    </Provider>
+    <Provider store={store}>
+      <App state={store.getState().Status} />
+    </Provider>,
+    document.querySelector('#root')
   )
 )
 
 render()
+
 
 let unsubscribe=store.subscribe(render);
 
