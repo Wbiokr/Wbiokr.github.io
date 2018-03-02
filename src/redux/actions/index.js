@@ -1,5 +1,12 @@
-export const changeRoute=(dispatch)=>{
-  console.log(232323)
-  setTimeout(()=>{console.log(44444);dispatch('CHANGE_ROUTE',{name:'fsdfsdfds'})},2000)
-  console.log(333333333)
+export const changeRoute=(dispatch,name)=>{
+  return (dispatch)=>{
+    console.log(name)
+    dispatch({
+      type:'CHANGE_ROUTE',
+      name,
+    })
+    // window.location.href=''+name
+    // setTimeout(()=>{window.location.href=name},300)
+    // setTimeout(()=>{console.log(dispatch);dispatch('CHANGE_ROUTE',{name:'fsdfsdfds'})},2000)
+  }
 }

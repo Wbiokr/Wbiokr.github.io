@@ -27,10 +27,10 @@ class App extends React.Component {
       { title: '作者', path: '/author' },
     ]
     return (
-      <Router>
+      <Router forceRefresh={false} keyLength={10}>
         <div className="wrapper">
           <Header nav={nav} route={this.props.status.route} changeRoute={this.props.changeRoute}/>
-          <main>
+          <main className={this.props.status.route==='/'?'home':''}>
             <Routes />
           </main>
           <Footer />
@@ -53,18 +53,20 @@ class Header extends React.Component {
       <header className={route === '/' ? 'home' : ''}>
         <div className='content'>
           <Link className='logo' to='/' title='回到首页'>
-            <img src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" alt="回到首页" />
-            <p>wbiokr.com</p>
+            <div onClick={this.changeRoute.bind(this,'/')}>
+              <img src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" alt="回到首页" />
+              <p>wbiokr.com</p>
+            </div>
           </Link>
 
           <nav>
             <ul>
               {
                 nav.map((item, index) => (
-                  <Li key={index} ><a onClick={this.changeRoute.bind(this,item.path)} className={item.path===this.props.route?'current':''} to={item.path}>{item.title}</a></Li>
+                  <Li key={index} onClick={this.changeRoute.bind(this,item.path)} ><Link  className={item.path===this.props.route?'current':''} to={item.path}>{item.title}</Link></Li>
                 ))
               }
-              <Li><a href='https://github.com/Wbiokr/Wbiokr.github.io/'>github</a></Li>
+              <Li><a href='https://github.com/Wbiokr/Wbiokr.github.io/' ><i className="iconfont icon-github" ></i></a></Li>
             </ul>
           </nav>
 
@@ -73,11 +75,11 @@ class Header extends React.Component {
     )
   }
   changeRoute(path){
-    this.props.changeRoute(path)
     // setTimeout(()=>{
-    //   alert(path)
-    //   window.location.href=path
-    // },200)
+      console.log(path);
+      this.props.changeRoute(path)
+    // },500)
+    // console.log(this.props)
   }
 } 
 
@@ -94,8 +96,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     changeRoute: function (name) {
-      alert(8888)
-      dispatch(changeRoute(dispatch))
+      dispatch(changeRoute(dispatch,name))
     }
   }
 }

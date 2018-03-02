@@ -16,7 +16,7 @@ import store from './redux/';
 const render=()=>(
   ReactDOM.render(
     <Provider store={store}>
-      <App state={store.getState().Status} />
+      <App />
     </Provider>,
     document.querySelector('#root')
   )
