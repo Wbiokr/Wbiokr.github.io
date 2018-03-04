@@ -27,15 +27,7 @@ class App extends React.Component {
       { title: '作者', path: '/author' },
     ]
     return (
-      <Router forceRefresh={false} keyLength={10}>
-        <div className="wrapper">
-          <Header nav={nav} route={this.props.status.route} changeRoute={this.props.changeRoute}/>
-          <main className={this.props.status.route==='/'?'home':''}>
-            <Routes />
-          </main>
-          <Footer />
-        </div>
-      </Router>
+      <Routes />
     )
   }
 }
