@@ -116,7 +116,7 @@ const bounceTransition={
 const mapStyles=styles=>(
    {
     opacity:styles.opacity,
-    transform:`translateX(${100*styles.translateX}%) `,
+    transform:`translateY(${100*styles.translateX}%) `,
   }
 );
 
@@ -126,9 +126,9 @@ class Routes extends React.Component {
   render() {
     return (
       // switch的作用：可以设置默认的路由
-      <Switch>
+      // <Switch>
       <AnimatedSwitch 
-        runOnMount={true} 
+        // runOnMount={true} 
         wrapperComponent='div'  
         // className='switch-wrapper'
         atEnter={bounceTransition.atEnter}
@@ -148,7 +148,7 @@ class Routes extends React.Component {
             ))
           }
           </AnimatedSwitch>
-          </Switch>
+          // </Switch>
     )
   }
 }
