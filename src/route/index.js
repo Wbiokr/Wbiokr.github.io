@@ -3,7 +3,6 @@ import {
   Switch,
   Route,
   BrowserRouter,
-  // Redirect,
 } from 'react-router-dom';
 import {
   AnimatedSwitch,
@@ -13,134 +12,18 @@ import {
 
 import NavBar from './Nav';
 
-import Bundle from './bundle';
+import cxs from 'cxs'
 
-const Home = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../views/containers/Home').default)
-      }, 'home')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-);
-
-const Music = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../views/containers/Music').default)
-      }, 'music')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-);
-
-const Movie = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../views/containers/Movie').default)
-      }, 'movie')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-);
-
-const Tour = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../views/containers/Tour').default)
-      }, 'tour')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-);
-
-const Opus = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../views/containers/Opus').default)
-      }, 'opus')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-);
-
-const Author = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../views/containers/Author').default)
-      }, 'author')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-);
-
-const Nomatch = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../views/containers/404').default)
-      }, '404')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-)
-
-const routes = [
-  {
-    path: '/',
-    exact: true,
-    component: Home,
-  },
-  {
-    path: '/music',
-    exact: true,
-    component: Music,
-  },
-  {
-    path: '/movie',
-    exact: true,
-    component: Movie,
-  },
-  {
-    path: '/tour',
-    exact: true,
-    component: Tour,
-  },
-  {
-    path: '/opus',
-    exact: true,
-    component: Opus,
-  },
-  {
-    path: '/author',
-    exact: true,
-    component: Author,
-  },
-
-]
+import routes from './Routes'
 
 export default class Routes extends React.Component {
   render() {
     return (
       <BrowserRouter basename='/'>
         <Route render={({ location }) => (
-          <div className='wrapper'>
+          <div className={rule} >
             <AnimatedRoute
-              className='daohang'
+              className='navigator'
               path='/:any'
               component={NavBar}
               atEnter={{offset:-100}}
@@ -151,7 +34,7 @@ export default class Routes extends React.Component {
               }}
             />
             <AnimatedSwitch 
-              className='neirong'
+              className={`content ${content}`}
               atEnter={{offset:50}}
               atLeave={{offset:-100}}
               atActive={{offset:0}}
@@ -164,7 +47,6 @@ export default class Routes extends React.Component {
                   <Route key={index} path={item.path} exact={item.exact} component={item.component} />
                 ))
               }
-              <Route component={Nomatch} />
             </AnimatedSwitch>
           </div>
         )} />
@@ -172,3 +54,19 @@ export default class Routes extends React.Component {
     )
   }
 }
+
+const rule=cxs({
+  height:'100%',
+  width:'100%',
+})
+
+const content=cxs({
+  position:'absolute',
+  height:'100%',
+  width:'100%',
+  zIndex:1,
+  ' >div':{
+    height:'100%',
+    width:'100%',
+  }
+})

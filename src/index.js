@@ -7,12 +7,8 @@ import './utils/';
 
 import store from './redux/';
 
-import './views/app.styl'
-import './views/normalize.styl'
-// ReactDOM.render(
-//   <App />,
-//   document.querySelector('#root')
-// )
+import './normalize.styl'
+
 
 const render=()=>(
   ReactDOM.render(

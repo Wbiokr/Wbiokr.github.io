@@ -1,31 +1,31 @@
 import React from 'react';
 
-export default class Bundle extends React.Component{
-  constructor(props){
+export default class Bundle extends React.Component {
+  constructor(props) {
     super(props);
-    this.state={
-      mod:null
+    this.state = {
+      mod: null
     }
   }
 
-  load=props=>{
+  load = props => {
     this.setState({
-      mod:null
+      mod: null
     });
     props.load(
-      mod=>{
+      mod => {
         this.setState({
-          mod:mod?mod:null
+          mod: mod ? mod : null
         });
       }
     )
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.load(this.props)
   }
 
-  render(){
-    return this.state.mod?this.props.children(this.state.mod):null
+  render() {
+    return this.state.mod ? this.props.children(this.state.mod) : null
   }
 }

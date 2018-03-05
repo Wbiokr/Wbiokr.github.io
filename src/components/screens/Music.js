@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './index.styl'
+import cxs from 'cxs'
 
 export default class Music extends React.Component {
   render() {
     return (
-      <div className="page-music" >
-        <div className="wrapper2">
+      <div className={`page-music ${rule }`}>
+        <div>
           <article>
             <section className="menu">
               <article>
@@ -61,3 +61,34 @@ export default class Music extends React.Component {
     )
   }
 }
+
+const rule=cxs({
+  height: '100%',
+  background: 'linear-gradient(90deg, #7E898F 0%, #636C75 100%), radial-gradient(at top, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.55) 100%), radial-gradient(at top, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.08) 63%)',
+  'bakcground-blend-mode': 'multiply,screen',
+  ' >div':{
+    height: '100%',
+    paddingTop: '70px',
+    paddingBottom: '50px',
+    display: 'flex',
+    alignItems: 'center',
+    ' >article':{
+      margin: '0 auto',
+      width: '1200px',
+      color: 'rgba(255,255,255,0.9)',
+      display: 'flex',
+      'justify-content': 'space-between',
+      border: '1px solid #fff',
+      height: '100%',
+      maxHeight: '800px',
+      ' .menu':{
+        flex: 2,
+        border: '1px solid #f00',
+      },
+      ' .detail':{
+        flex: 1,
+        border: '1px solid  #ff0',
+      }
+    }
+  }
+})
