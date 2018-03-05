@@ -77,11 +77,11 @@ const mapStateToProps=(state)=>(
 )
 
 const wrapper=cxs({
-  position: 'fixed',
+  // position: 'fixed',
   height: '50px',
   width: '100%',
   background: 'rgba(7,11,32,0.98)',
-  zIndex:10,
+  // zIndex:10,
 })
 
 const rule=cxs({

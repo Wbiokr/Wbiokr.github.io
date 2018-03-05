@@ -14,40 +14,47 @@ import NavBar from './Nav';
 
 import cxs from 'cxs'
 
-import routes from './Routes'
+import Routes,{Home} from './Routes'
 
-export default class Routes extends React.Component {
+export default class Router extends React.Component {
   render() {
+    console.log(this.props.location)
     return (
       <BrowserRouter basename='/'>
         <Route render={({ location }) => (
           <div className={rule} >
+            <AnimatedSwitch
+              className={`content ${content}`}
+              atEnter={{
+                offset: 100,
+              }}
+              atLeave={{
+                offset: glide(-100),
+              }}
+              atActive={{
+                offset: glide(0),
+              }}
+              runOnMount={location.pathname === '/'}
+              mapStyles={styles => ({
+                transform: `translateX(${styles.offset}%)`,
+              })}
+            >
+                <Route exact component={Home} path='/' /> 
+                <Route component={Routes} />
+            </AnimatedSwitch>
             <AnimatedRoute
-              className='navigator'
+              className={`navigator ${header}`}
               path='/:any'
               component={NavBar}
               atEnter={{ offset: -100 }}
-              atLeave={{ offset: slide(-150) }}
-              atActive={{ offset: slide(0) }}
-              mapStyle={(styles) => {
-                transform: `translateY(${styles.offset})`
+              atLeave={{ offset: -150 }}
+              atActive={{ offset: 0 }}
+              mapStyles={(styles) => {
+                return {
+                  transform: `translateY(${styles.offset}%)`
+                }
               }}
             />
-            <AnimatedSwitch
-              className={`content ${content}`}
-              atEnter={{ offset: 50 }}
-              atLeave={{ offset: glide(-100) }}
-              atActive={{ offset: glide(0) }}
-              mapStyle={(styles) => {
-                transform: `translateX(${styles.offset})`
-              }}
-            >
-              {
-                routes.map((item, index) => (
-                  <Route key={index} path={item.path} exact={item.exact} component={item.component} />
-                ))
-              }
-            </AnimatedSwitch>
           </div>
         )} />
       </BrowserRouter>
@@ -55,25 +62,17 @@ export default class Routes extends React.Component {
   }
 }
 
-const slide = (val) => {
+function glide(val) {
   return spring(
     val,
     {
-      stiffness: 125,
-      damping: 16
+      stiffness: 174,
+      damping: 24
     }
   )
 }
 
-const glide=(val)=>{
-  return spring(
-    val,
-    {
-      stiffness:174,
-      damping:24
-    }
-  )
-}
+
 
 const rule = cxs({
   height: '100%',
@@ -81,13 +80,27 @@ const rule = cxs({
 })
 
 const content = cxs({
-  position: 'absolute',
   height: '100%',
   width: '100%',
-  zIndex: 1,
   ' >div': {
+    position: 'fixed',
+    // zIndex: 1,
     height: '100%',
     width: '100%',
+    top: 0,
+    left: 0,
   }
 })
 
+const header = cxs({
+  // height: '100%',
+  // width: '100%',
+  ' >div': {
+    position: 'fixed',
+    // zIndex: 100,
+    // height: '100%',
+    width: '100%',
+    top: 0,
+    left: 0,
+  }
+})

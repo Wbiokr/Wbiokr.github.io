@@ -1,7 +1,12 @@
 import React from 'react'
 import Bundle from './bundle'
+import { AnimatedSwitch, spring } from 'react-router-transition'
+import { Route } from 'react-router-dom'
+import cxs from 'cxs'
+import Screen from './Screen'
 
-const Home = props => (
+
+const HomePage = props => (
   <Bundle load={
     cb => {
       require.ensure([], require => {
@@ -12,6 +17,10 @@ const Home = props => (
     {Com => <Com {...props} />}
   </Bundle>
 );
+
+export const Home=()=>{
+  return <Screen><HomePage /></Screen>
+}
 
 const Music = props => (
   <Bundle load={
@@ -85,12 +94,12 @@ const Author = props => (
 //   </Bundle>
 // )
 
-export default [
-  {
-    path: '/',
-    exact: true,
-    component: Home,
-  },
+const routes = [
+  // {
+  //   path: '/',
+  //   exact: true,
+  //   component: Home,
+  // },
   {
     path: '/music',
     exact: true,
@@ -118,3 +127,65 @@ export default [
   },
 
 ]
+
+
+export default () => (
+  <Screen>
+    <div className={rule}>
+      <AnimatedSwitch
+        className='fsdfsdfsdf'
+        {...switchConfig}
+        mapStyles={styles => (
+          {
+            opacity: styles.opacity,
+            transform: `translateY(${styles.offset}px)`,
+          }
+        )}
+      >
+        <Route path='/music' component={Music} />
+        <Route path='/movie' component={Movie} />
+        <Route path='/tour' component={Tour} />
+        <Route path='/opus' component={Opus} />
+        <Route path='/author' component={Author} />
+      </AnimatedSwitch>
+    </div>
+  </Screen>
+)
+
+const switchConfig = {
+  atEnter: {
+    opacity: 0,
+    offset: -50,
+  },
+  atLeave: {
+    opacity: 0,
+    offset: zoom(50),
+  },
+  atActive: {
+    opacity: 1,
+    offset: zoom(0),
+  },
+};
+
+function zoom(val) {
+  return spring(val, {
+    stiffness: 135,
+    damping: 15,
+  });
+}
+
+const rule=cxs({
+  height: '100%',
+  width: '100%',
+  // backgroundColor: '#fff',
+  ' > div' :{
+    // position: 'absolute',
+    width: '100%',
+    height: '100%',
+    overflowY: 'auto',
+    // '-webkit-overflow-scrolling': 'touch',
+    ' >div':{
+      height:'100%'
+    }
+  }
+})
