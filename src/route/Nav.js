@@ -78,9 +78,9 @@ const mapStateToProps=(state)=>(
 
 const wrapper=cxs({
   // position: 'fixed',
-  height: '50px',
+  height: '70px',
   width: '100%',
-  background: 'rgba(7,11,32,0.98)',
+  background: 'rgb(40,40,50)',
   // zIndex:10,
 })
 

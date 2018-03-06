@@ -4,4 +4,11 @@ import {
 
 import Music from '../components/screens/Music';
 
-export default connect()(Music)
+const mapStateToProps=(state)=>(
+  {
+    music:state.Music
+  }
+)
+
+
+export default connect(mapStateToProps)(Music)

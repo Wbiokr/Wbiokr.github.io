@@ -94,12 +94,12 @@ const Author = props => (
 //   </Bundle>
 // )
 
-const routes = [
-  // {
-  //   path: '/',
-  //   exact: true,
-  //   component: Home,
-  // },
+export default [
+  {
+    path: '/',
+    exact: true,
+    component: HomePage,
+  },
   {
     path: '/music',
     exact: true,
@@ -129,63 +129,64 @@ const routes = [
 ]
 
 
-export default () => (
-  <Screen>
-    <div className={rule}>
-      <AnimatedSwitch
-        className='fsdfsdfsdf'
-        {...switchConfig}
-        mapStyles={styles => (
-          {
-            opacity: styles.opacity,
-            transform: `translateY(${styles.offset}px)`,
-          }
-        )}
-      >
-        <Route path='/music' component={Music} />
-        <Route path='/movie' component={Movie} />
-        <Route path='/tour' component={Tour} />
-        <Route path='/opus' component={Opus} />
-        <Route path='/author' component={Author} />
-      </AnimatedSwitch>
-    </div>
-  </Screen>
-)
+// const app = () => (
+//   <Screen>
+//     <div className={rule}>
+//       <AnimatedSwitch
+//         className='fsdfsdfsdf'
+//         {...switchConfig}
+//         mapStyles={styles => (
+//           {
+//             // opacity: styles.opacity,
+//             // transform:`scale(${styles.opacity})`
+//             transform: `translateX(${styles.offset}%)`,
+//           }
+//         )}
+//       >
+//         <Route path='/music' component={Music} />
+//         <Route path='/movie' component={Movie} />
+//         <Route path='/tour' component={Tour} />
+//         <Route path='/opus' component={Opus} />
+//         <Route path='/author' component={Author} />
+//       </AnimatedSwitch>
+//     </div>
+//   </Screen>
+// )
 
-const switchConfig = {
-  atEnter: {
-    opacity: 0,
-    offset: -50,
-  },
-  atLeave: {
-    opacity: 0,
-    offset: zoom(50),
-  },
-  atActive: {
-    opacity: 1,
-    offset: zoom(0),
-  },
-};
+// const switchConfig = {
+//   atEnter: {
+//     // opacity: 0,
+//     offset: 150,
+//   },
+//   atLeave: {
+//     // opacity: 0,
+//     offset: -100,
+//   },
+//   atActive: {
+//     // opacity: 1,
+//     offset: 0,
+//   },
+// };
 
-function zoom(val) {
-  return spring(val, {
-    stiffness: 135,
-    damping: 15,
-  });
-}
+// function zoom(val) {
+//   return spring(val, {
+//     stiffness: 135,
+//     damping: 15,
+//   });
+// }
 
-const rule=cxs({
-  height: '100%',
-  width: '100%',
-  // backgroundColor: '#fff',
-  ' > div' :{
-    // position: 'absolute',
-    width: '100%',
-    height: '100%',
-    overflowY: 'auto',
-    // '-webkit-overflow-scrolling': 'touch',
-    ' >div':{
-      height:'100%'
-    }
-  }
-})
+// const rule=cxs({
+//   height: '100%',
+//   width: '100%',
+//   // backgroundColor: '#fff',
+//   ' > div' :{
+//     // position: 'absolute',
+//     width: '100%',
+//     height: '100%',
+//     overflow: 'hidden',
+//     // '-webkit-overflow-scrolling': 'touch',
+//     ' >div':{
+//       height:'100%'
+//     }
+//   }
+// })

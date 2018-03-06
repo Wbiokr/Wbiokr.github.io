@@ -27,20 +27,27 @@ export default class Router extends React.Component {
               className={`content ${content}`}
               atEnter={{
                 offset: 100,
+                opc:0,
               }}
               atLeave={{
                 offset: glide(-100),
+                opc:0,
               }}
               atActive={{
                 offset: glide(0),
+                opc:1,
               }}
               runOnMount={location.pathname === '/'}
               mapStyles={styles => ({
-                transform: `translateX(${styles.offset}%)`,
+                // opacity:styles.opc,
+                transform: `translateX(${styles.offset}%) `,
               })}
             >
-                <Route exact component={Home} path='/' /> 
-                <Route component={Routes} />
+                {
+                  Routes.map((item,index)=>(
+                    <Route path={item.path} exact={item.exact} component={item.component} key={index} />
+                  ))
+                }
             </AnimatedSwitch>
             <AnimatedRoute
               className={`navigator ${header}`}
@@ -85,10 +92,13 @@ const content = cxs({
   ' >div': {
     position: 'fixed',
     // zIndex: 1,
-    height: '100%',
+    height: ' calc( 100% - 0px )',
     width: '100%',
     top: 0,
     left: 0,
+    ' >div':{
+      paddingTop:'70px',
+    }
   }
 })
 
