@@ -18,9 +18,11 @@ import Routes,{Home} from './Routes'
 
 export default class Router extends React.Component {
   render() {
-    console.log(this.props.location)
+    const {Music} = this.props;
     return (
       <BrowserRouter basename='/'>
+  
+
         <Route render={({ location }) => (
           <div className={rule} >
             <AnimatedSwitch
@@ -62,6 +64,7 @@ export default class Router extends React.Component {
                 }
               }}
             />
+            <audio autoPlay loop  src={Music.playing.link} />
           </div>
         )} />
       </BrowserRouter>

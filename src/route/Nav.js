@@ -41,7 +41,7 @@ class NavBar extends React.Component {
                 })
               }}>
                 <img src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" alt="回到首页" />
-                <p>wbiokr.com</p>
+                <p><span>wbiokr.com</span></p>
               </div>
             </Link>
           </li>
