@@ -1,8 +1,8 @@
 import React from 'react'
 import Bundle from './bundle'
-import { AnimatedSwitch, spring } from 'react-router-transition'
-import { Route } from 'react-router-dom'
-import cxs from 'cxs'
+// import { AnimatedSwitch, spring } from 'react-router-transition'
+// import { Route } from 'react-router-dom'
+// import cxs from 'cxs'
 import Screen from './Screen'
 
 

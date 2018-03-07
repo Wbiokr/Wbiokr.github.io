@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Switch,
+  // Switch,
   Route,
   BrowserRouter,
 } from 'react-router-dom';
@@ -14,7 +14,7 @@ import NavBar from './Nav';
 
 import cxs from 'cxs'
 
-import Routes,{Home} from './Routes'
+import Routes from './Routes'
 
 export default class Router extends React.Component {
   render() {
@@ -64,11 +64,20 @@ export default class Router extends React.Component {
                 }
               }}
             />
-            <audio autoPlay loop  src={Music.playing.link} />
+            <audio 
+              controls
+              ref='audio'
+              autoPlay={Music.playing.isPlaying}
+              loop
+              src={Music.playing.link}
+             />
           </div>
         )} />
       </BrowserRouter>
     )
+  }
+  componentDidMount(){
+    document.querySelector('audio').volume=this.props.Music.playing.volume
   }
 }
 

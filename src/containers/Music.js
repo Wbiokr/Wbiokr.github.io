@@ -10,5 +10,33 @@ const mapStateToProps=(state)=>(
   }
 )
 
+const mapDispatchToProps=(dispatch)=>({
+  togglePlay(){
+    dispatch({type:'MUSIC_TOGGLE'})
+  },
+  toggleMuted(){
+    dispatch({type:'MUTED_TOGGLE'})
+  },
+  changeVolume(e){
+    let t=null;
+    if(e.target.nodeName.toLowerCase()==='em'){
+      t=e.target.parentNode
+    }else if(e.target.nodeName.toLowerCase()==='i'){
+      t=e.target
+    }
+    const oX=e.target.offsetLeft;
+    const eX=e.pageX;
+    const w=t.offsetWidth;
 
-export default connect(mapStateToProps)(Music)
+    const v=(eX-oX)/w
+
+    dispatch({
+      type:'CHANGE_VOLUME',
+      v
+    })
+
+  }
+})
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Music)

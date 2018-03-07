@@ -2,12 +2,16 @@ import React from 'react';
 
 import cxs from 'cxs'
 
-import colors from '../../utils/color'
+// import colors from '../../utils/color'
 
 import imgSrc from '../../img/player_cover.png'
 
 export default class Music extends React.Component {
   render() {
+    console.log(this.props.music.playing)
+    const playingStatus=this.props.music.playing.isPlaying?'zanting current':'bofang2'
+    const mutedStatus=this.props.music.playing.isDefaultMuted?'jingyin3':'laba current'
+    const width=100*Number(this.props.music.playing.volume)+'%'
     return (
       <div className={`page-music ${rule }`}>
         <div>
@@ -50,21 +54,6 @@ export default class Music extends React.Component {
                   <div className="header"></div>
                   <section>
                     <ul>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li className='current'>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话7</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话</li>
-                      <li>歌词第一句话6</li>
                     </ul>
                   </section>
                   <div className="footer"></div>
@@ -80,16 +69,29 @@ export default class Music extends React.Component {
                         <div className="play">
                           <p className='select clearfix'>
                             <i className="iconfont icon-prev"></i>  
-                            <i className="iconfont icon-zanting1"></i>  
+                            <i 
+                              onClick={this.props.togglePlay} 
+                              className={`iconfont icon-${playingStatus}`}
+                            ></i>  
                             <i className="iconfont icon-next"></i>  
                           </p>
-                          <p className='mode'>
+                          <p className='mode clearfix'>
                             <span>
-                              <i className="iconfont icon-prev"></i>
+                              <i className="iconfont icon-liebiao1"></i>
                             </span>  
                             <span>
-                              <i className="iconfont icon-yinle"></i>
-                              <i><em></em></i>
+                              <i 
+                                onClick={this.props.toggleMuted}
+                                className={`iconfont icon-${mutedStatus}`}
+                              ></i>
+                              <i
+                                className='sound'
+                                onClick={(e)=>{this.props.changeVolume(e)}}
+                               >
+                                <em 
+                                  style={{width}}
+                                 ></em>
+                              </i>
                             </span>  
                           </p>
                         </div>
@@ -270,16 +272,41 @@ const rule=cxs({
                   }
                 },
                 ' .select':{
-                  width:'200px',
+                  width:'120px',
                   // ' '
                   // display:'flex',
                   ' i':{
-                    marginRight:'15px',
                     fontSize:'22px',
+                    marginRight:'15px',
                   },
                 },
                 ' .mode':{
                   flex:1,
+                  display:'flex',
+                  justifyContent:'flex-end',
+                  ' >span':{
+                    marginLeft:'20px',
+                    display:'flex',
+                    alignItems:'center',
+                    cursor:'auto',
+                    ' i':{
+                      fontSize:'22px',
+                      '.sound':{
+                        width:'70px',
+                        background:'#666',
+                        height:'4px',
+                        marginLeft:'8px',
+                        display:'flex',
+                        ' em':{
+                          // display:'inline-block',
+                          // width:'20%',
+                          height:'100%',
+                          background:'rgb(0,141,86)',
+                          transition:'width ease 0.2s',
+                        }
+                      },
+                    }
+                  }
                 },
               },
             },
