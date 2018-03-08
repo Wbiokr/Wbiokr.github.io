@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  Switch,
+  // Switch,
   Route,
-  BrowserRouter,
+  HashRouter,
 } from 'react-router-dom';
 import {
   AnimatedSwitch,
@@ -14,13 +14,15 @@ import NavBar from './Nav';
 
 import cxs from 'cxs'
 
-import Routes,{Home} from './Routes'
+import Routes from './Routes'
 
 export default class Router extends React.Component {
   render() {
-    console.log(this.props.location)
+    const {Music} = this.props;
     return (
-      <BrowserRouter basename='/'>
+      <HashRouter basename='/'>
+  
+
         <Route render={({ location }) => (
           <div className={rule} >
             <AnimatedSwitch
@@ -62,10 +64,20 @@ export default class Router extends React.Component {
                 }
               }}
             />
+            <audio 
+              controls
+              ref='audio'
+              autoPlay={Music.playing.isPlaying}
+              loop
+              src={Music.playing.link}
+             />
           </div>
         )} />
-      </BrowserRouter>
+      </HashRouter>
     )
+  }
+  componentDidMount(){
+    document.querySelector('audio').volume=this.props.Music.playing.volume
   }
 }
 

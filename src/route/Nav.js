@@ -5,7 +5,7 @@ import {
   NavLink,
 } from 'react-router-dom'
 
-import { AnimatedRoute, } from 'react-router-transition'
+// import { AnimatedRoute, } from 'react-router-transition'
 
 import cxs from 'cxs'
 
@@ -22,11 +22,7 @@ const nav = [
 ]
 
 class NavBar extends React.Component {
-  constructor(props){
-    super(props)
-  }
   render() {
-    console.log(this.props)
     return (
       <header className={wrapper}>
         <nav  className={rule}>
@@ -41,7 +37,7 @@ class NavBar extends React.Component {
                 })
               }}>
                 <img src="https://zos.alipayobjects.com/rmsportal/TOXWfHIUGHvZIyb.svg" alt="回到首页" />
-                <p>wbiokr.com</p>
+                <p><span>wbiokr.com</span></p>
               </div>
             </Link>
           </li>
@@ -68,13 +64,13 @@ class NavBar extends React.Component {
 
 }
 
-export default connect(mapStateToProps)(NavBar)
 
 const mapStateToProps=(state)=>(
   {
     status:state.Status
   }
 )
+export default connect(mapStateToProps)(NavBar)
 
 const wrapper=cxs({
   // position: 'fixed',
