@@ -1,13 +1,16 @@
 {
-  "404.js": "js/pages/chunk.404.cbbb4.js",
-  "app.css": "css/app.cbbb4.css",
-  "app.js": "js/app.cbbb4.js",
-  "author.js": "js/pages/chunk.author.cbbb4.js",
-  "home.js": "js/pages/chunk.home.cbbb4.js",
-  "manifest.js": "js/manifest.cbbb4.js",
-  "movie.js": "js/pages/chunk.movie.cbbb4.js",
-  "music.js": "js/pages/chunk.music.cbbb4.js",
-  "opus.js": "js/pages/chunk.opus.cbbb4.js",
-  "tour.js": "js/pages/chunk.tour.cbbb4.js",
-  "vendors.js": "js/vendors.cbbb4.js"
+  "app.css": "css/app.5f5a4.css",
+  "app.js": "js/app.5f5a4.js",
+  "author.js": "js/pages/chunk.author.5f5a4.js",
+  "home.js": "js/pages/chunk.home.5f5a4.js",
+  "img\\player_cover.png": "img/player_cover.373e0.png",
+  "manifest.js": "js/manifest.5f5a4.js",
+  "media\\iconfont.eot?t=1520426648803": "media/iconfont.eot",
+  "media\\iconfont.svg?t=1520426648803": "media/iconfont.svg",
+  "media\\iconfont.ttf?t=1520426648803": "media/iconfont.ttf",
+  "movie.js": "js/pages/chunk.movie.5f5a4.js",
+  "music.js": "js/pages/chunk.music.5f5a4.js",
+  "opus.js": "js/pages/chunk.opus.5f5a4.js",
+  "tour.js": "js/pages/chunk.tour.5f5a4.js",
+  "vendors.js": "js/vendors.5f5a4.js"
 }
