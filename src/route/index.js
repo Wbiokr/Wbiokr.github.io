@@ -2,7 +2,7 @@ import React from 'react';
 import {
   // Switch,
   Route,
-  BrowserRouter,
+  HashRouter,
 } from 'react-router-dom';
 import {
   AnimatedSwitch,
@@ -20,7 +20,7 @@ export default class Router extends React.Component {
   render() {
     const {Music} = this.props;
     return (
-      <BrowserRouter basename='/'>
+      <HashRouter basename='/'>
   
 
         <Route render={({ location }) => (
@@ -73,7 +73,7 @@ export default class Router extends React.Component {
              />
           </div>
         )} />
-      </BrowserRouter>
+      </HashRouter>
     )
   }
   componentDidMount(){
