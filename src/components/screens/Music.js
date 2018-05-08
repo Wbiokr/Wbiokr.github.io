@@ -8,10 +8,10 @@ import imgSrc from '../../img/player_cover.png'
 
 export default class Music extends React.Component {
   render() {
-    console.log(this.props.music.playing)
     const playingStatus=this.props.music.playing.isPlaying?'zanting current':'bofang2'
     const mutedStatus=this.props.music.playing.isDefaultMuted?'jingyin3':'laba current'
     const width=100*Number(this.props.music.playing.volume)+'%'
+    const range=100*(Number(this.props.music.playing.current)/Number(this.props.music.playing.duration))+'%'
     return (
       <div className={`page-music ${rule }`}>
         <div>
@@ -63,8 +63,8 @@ export default class Music extends React.Component {
                         <img src={imgSrc} alt=""/>
                      </section>
                      <section className="control">
-                        <div className="range">
-                          <div></div>
+                        <div className="range" onClick={(e)=>{this.props.changeRange(e)}}>
+                          <div style={{width:range}}></div>
                         </div>
                         <div className="play">
                           <p className='select clearfix'>
@@ -254,11 +254,13 @@ const rule=cxs({
                 margin:'15px 0',
                 borderRadius:'2px',
                 overflow:'hidden',
+                cursor:'pointer',
                 ' >div':{
-                  width:'10%',
+                  // width:'10%',
                   height:'100%',
                   background:'rgb(0,141,86)',
                   borderRadius:'inherit',
+                  transition:'width linear 0.3s'
                 }
               },
               ' .play':{

@@ -13,7 +13,7 @@ import './normalize.styl'
 const render=()=>(
   ReactDOM.render(
     <Provider store={store}>
-      <App {...store.getState()} />
+      <App {...store.getState()} dispatch={store.dispatch} />
     </Provider>,
     document.querySelector('#root')
   )

@@ -5,18 +5,32 @@ import Bundle from './bundle'
 // import cxs from 'cxs'
 import Screen from './Screen'
 
+function bund(chunk){
+  return  props => (
+        <Bundle load={
+          cb => {
+            require.ensure([], require => {
+              cb(require(`../containers/${chunk}`).default)
+            })
+          }
+        }>
+          {Com => <Com {...props} />}
+        </Bundle>
+      )
+}
 
-const HomePage = props => (
-  <Bundle load={
-    cb => {
-      require.ensure([], require => {
-        cb(require('../containers/Home').default)
-      }, 'home')
-    }
-  }>
-    {Com => <Com {...props} />}
-  </Bundle>
-);
+const HomePage=bund('Home','afsddaf')
+// const HomePage = props => (
+//   <Bundle load={
+//     cb => {
+//       require.ensure([], require => {
+//         cb(require('../containers/Home').default)
+//       }, 'home')
+//     }
+//   }>
+//     {Com => <Com {...props} />}
+//   </Bundle>
+// );
 
 export const Home=()=>{
   return <Screen><HomePage /></Screen>

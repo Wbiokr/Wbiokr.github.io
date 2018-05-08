@@ -65,11 +65,12 @@ export default class Router extends React.Component {
               }}
             />
             <audio 
-              controls
               ref='audio'
               autoPlay={Music.playing.isPlaying}
               loop
               src={Music.playing.link}
+              onTimeUpdate={this.timeUpdate.bind(this)}
+              onLoadedData={this.loadData.bind(this)}
              />
           </div>
         )} />
@@ -79,7 +80,22 @@ export default class Router extends React.Component {
   componentDidMount(){
     document.querySelector('audio').volume=this.props.Music.playing.volume
   }
+  timeUpdate(){
+    const current=document.querySelector('audio').currentTime;
+    this.props.dispatch({
+      type:'CHANGE_RANGE',
+      current,
+    })
+  }
+  loadData(){
+    const duration=document.querySelector('audio').duration
+    this.props.dispatch({
+      type:'CHANGE_DURATION',
+      duration,
+    })
+  }
 }
+
 
 function glide(val) {
   return spring(

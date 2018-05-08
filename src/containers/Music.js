@@ -35,6 +35,25 @@ const mapDispatchToProps=(dispatch)=>({
       v
     })
 
+  },
+  changeRange(e){
+    let t=null;
+    if(e.target.className.includes('range')){
+      t=e.target
+    }else{
+      t=e.target.parentNode
+    }
+    const oX=e.target.offsetLeft
+    const eX=e.pageX;
+    const w=t.offsetWidth;
+
+    const current=(eX-oX)/w
+
+    dispatch({
+      type:'CHANGE_RANGE',
+      current,
+      isChange:true,
+    })
   }
 })
 

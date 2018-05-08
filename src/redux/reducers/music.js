@@ -47,11 +47,13 @@ const initState = {
     },
   ],
   playing: {
-    link: 'http://m10.music.126.net/20180307213126/0c8daf496bbe3057d25b99599482751d/ymusic/15f0/0a59/e132/c77764adfc970ded7a1ac5f4f8595ef3.mp3',
+    link: 'http://m10.music.126.net/20180308175824/9da2066d285d76d82ae3d19828c1488a/ymusic/9090/cc15/dd58/30712921ad260cd57fbdc27d7fc9c28a.mp3',
     name: '白兰鸽',
     isPlaying: true,
     isDefaultMuted:false,	
     volume:0.8,
+    duration:0,
+    current:0,
   },
 }
 
@@ -82,6 +84,22 @@ export default (state = initState, action) => {
           isDefaultMuted:false,
         })
       })
+    case 'CHANGE_RANGE':
+      if(action.isChange){
+        document.querySelector('audio').currentTime=action.current*state.playing.duration
+        return state;
+      }
+      return Object.assign({},state,{
+        playing:Object.assign({},state.playing,{
+          current:action.current
+        })
+      })
+    case 'CHANGE_DURATION':
+      return Object.assign({},state,{
+        playing:Object.assign({},state.playing,{
+          duration:action.duration
+        })
+      })  
     default:
       return state;
   }
