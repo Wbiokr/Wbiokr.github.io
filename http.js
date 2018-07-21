@@ -7,6 +7,7 @@ const hostLocal='localhost';
 const hostIpv4=require('ipv4');
 const port=8800;
 
+
 http.createServer((req,res)=>{
     let pathname=url.parse(req.url).pathname;
     if(pathname.indexOf('.')==-1){
